@@ -7213,7 +7213,7 @@ const onyxv4_s5_0x1ad2eb = (()=>{
 									n.lastUpdateTime = le.time,
 									n.fadeStartTime = le.time,
 									this.cells.delete(s),
-									n.isFood || setTimeout(() => {
+									n.isFood || setTimeout(() => {/*
 										re.effectPoints.add({
 											x: n.staticX - (n.tab === 1 ? 0 : n.tab === 2 ? G.getOffset2.x : n.tab === 3 ? G.getOffset3.x : 3 < n.tab && q.mapTabs[n.tab-4].getOffset.x),
 											y: n.staticY - (n.tab === 1 ? 0 : n.tab === 2 ? G.getOffset2.y : n.tab === 3 ? G.getOffset3.y : 3 < n.tab && q.mapTabs[n.tab-4].getOffset.y),
@@ -7221,7 +7221,7 @@ const onyxv4_s5_0x1ad2eb = (()=>{
 											scale: 1/* > ~~(Math.sqrt(n.mass)/10) ? 1 : ~~(Math.sqrt(n.mass)/10)*/,
 											color: n.colorObject.hex
 										})
-									}, 1000))
+									*/}, 1000))
 								}
 								for (; !buf.endOfBuffer; ) {
 									const o = buf.readUInt32();
