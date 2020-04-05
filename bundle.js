@@ -7741,8 +7741,8 @@ const onyxv4_s5_0x1ad2eb = (()=>{
         }, {
             key: "mobileData",
             value(e, t) {
-                console.log(`Tab ${t} mobile data: `);
-                console.log(e);
+                //console.log(`Tab ${t} mobile data: `);
+                //console.log(e);
 				if (20 > e.dataView.byteLength) {
 					console.log(`Mobile Data: Tab ${t} logged out ( someone logged in from somewhere else )`);
 				};
