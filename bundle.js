@@ -3355,8 +3355,8 @@ const onyxv4_s5_0x1ad2eb = (()=>{
         }, {
             key: "setBackground",
             value(e) {
-                r("body").css("background", e)/*,
-                re.renderer.backgroundColor = parseInt(e.slice(1), 16)*/
+                r("body").css("background", e),
+                re.renderer.backgroundColor = parseInt(e.slice(1), 16)
             }
         }, {
             key: "setChatFontSize",
@@ -7741,8 +7741,8 @@ const onyxv4_s5_0x1ad2eb = (()=>{
         }, {
             key: "mobileData",
             value(e, t) {
-                //console.log(`Tab ${t} mobile data: `);
-                //console.log(e);
+                console.log(`Tab ${t} mobile data: `);
+                console.log(e);
 				if (20 > e.dataView.byteLength) {
 					console.log(`Mobile Data: Tab ${t} logged out ( someone logged in from somewhere else )`);
 				};
@@ -9330,9 +9330,9 @@ const onyxv4_s5_0x1ad2eb = (()=>{
             this.getEveryoneSkin(),
 			this.getBGImg(),
 			pe.init(),
-			/*this.renderer = new PIXI.Renderer(window.innerWidth, window.innerHeight, {
+			this.renderer = new PIXI.Renderer(window.innerWidth, window.innerHeight, {
 				view: canvas
-			}),*/
+			}),
             s.onresize = (()=>{
                 t.resizeCanvas()
             })
