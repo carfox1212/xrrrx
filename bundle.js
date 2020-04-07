@@ -3355,8 +3355,8 @@ const onyxv4_s5_0x1ad2eb = (()=>{
         }, {
             key: "setBackground",
             value(e) {
-                r("body").css("background", e),
-                re.renderer.backgroundColor = parseInt(e.slice(1), 16)
+                r("body").css("background", e)/*,
+                re.renderer.backgroundColor = parseInt(e.slice(1), 16)*/
             }
         }, {
             key: "setChatFontSize",
