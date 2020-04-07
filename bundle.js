@@ -3355,8 +3355,8 @@ const onyxv4_s5_0x1ad2eb = (()=>{
         }, {
             key: "setBackground",
             value(e) {
-                r("body").css("background", e)
-                //re.renderer.backgroundColor = parseInt(e.slice(1), 16)
+                r("body").css("background", e),
+                re.renderer.backgroundColor = parseInt(e.slice(1), 16)
             }
         }, {
             key: "setChatFontSize",
@@ -6615,7 +6615,7 @@ const onyxv4_s5_0x1ad2eb = (()=>{
 					e.isAlive && e.worldID !== A.worldID && e.worldID !== A.worldID2 && this.skinMap.set(e.worldID, e.skin ? (e.skin.includes("imgur") ? e.skin : this.code2url(e.skin)) : "https://i.imgur.com/O5k0G4p.png"),
 					e.isAlive2 && e.worldID2 !== A.worldID && e.worldID2 !== A.worldID2 && this.skinMap.set(e.worldID2, e.skin2 ? (e.skin2.includes("imgur") ? e.skin2 : this.code2url(e.skin2)) : "https://i.imgur.com/O5k0G4p.png");
 			}
-        },/* {
+        }, {
 			key: "getKanjis",
 			value() {
 				r.ajax("https://yueagar-kanji.herokuapp.com/kanjis", {
@@ -6631,7 +6631,7 @@ const onyxv4_s5_0x1ad2eb = (()=>{
 					}
 				});
 			}
-		},*/ {
+		}, {
             key: "getCustomSkin",
             value(e) {
                 const t = this.skinMap.get(e);
@@ -6641,7 +6641,7 @@ const onyxv4_s5_0x1ad2eb = (()=>{
                 return void 0 === o ? (this.downloadSkin(t),
                 !1) : o
             }
-        }, /*{
+        }, {
             key: "getKanjiSkin",
             value(e) {
                 const t = this.kanjiSkinMap.get(e);
@@ -6651,7 +6651,7 @@ const onyxv4_s5_0x1ad2eb = (()=>{
                 return void 0 === o ? (this.downloadSkin(t),
                 !1) : o
             }
-        },*/ {
+        }, {
             key: "getVanillaSkin",
             value(e) {
 				//console.log(`https://configs-web.agario.miniclippt.com/live/v15/2637/${e.substr(1,1).toUpperCase() + e.slice(2)}.png`);
@@ -6685,7 +6685,7 @@ const onyxv4_s5_0x1ad2eb = (()=>{
         }, {
             key: "code2url",
             value: e=>"https://i.imgur.com/" + e + ".png"
-        }/* {
+        }, {
             key: "checkHasKanji",
             value(e) {
 				let matched = !1;
@@ -6694,7 +6694,7 @@ const onyxv4_s5_0x1ad2eb = (()=>{
 				});
 				return matched;
 			}
-        }*/]),
+        }]),
         e
     }
     )()),
@@ -7214,13 +7214,13 @@ const onyxv4_s5_0x1ad2eb = (()=>{
 									n.fadeStartTime = le.time,
 									this.cells.delete(s),
 									n.isFood || setTimeout(() => {
-										//re.effectPoints.add({
-											//x: n.staticX - (n.tab === 1 ? 0 : n.tab === 2 ? G.getOffset2.x : n.tab === 3 ? G.getOffset3.x : 3 < n.tab && q.mapTabs[n.tab-4].getOffset.x),
-											//y: n.staticY - (n.tab === 1 ? 0 : n.tab === 2 ? G.getOffset2.y : n.tab === 3 ? G.getOffset3.y : 3 < n.tab && q.mapTabs[n.tab-4].getOffset.y),
-											//time: le.time,
-											//scale: 1/* > ~~(Math.sqrt(n.mass)/10) ? 1 : ~~(Math.sqrt(n.mass)/10)*/,
-											//color: n.colorObject.hex
-										//})
+										re.effectPoints.add({
+											x: n.staticX - (n.tab === 1 ? 0 : n.tab === 2 ? G.getOffset2.x : n.tab === 3 ? G.getOffset3.x : 3 < n.tab && q.mapTabs[n.tab-4].getOffset.x),
+											y: n.staticY - (n.tab === 1 ? 0 : n.tab === 2 ? G.getOffset2.y : n.tab === 3 ? G.getOffset3.y : 3 < n.tab && q.mapTabs[n.tab-4].getOffset.y),
+											time: le.time,
+											scale: 1/* > ~~(Math.sqrt(n.mass)/10) ? 1 : ~~(Math.sqrt(n.mass)/10)*/,
+											color: n.colorObject.hex
+										})
 									}, 1000))
 								}
 								for (; !buf.endOfBuffer; ) {
@@ -9399,7 +9399,7 @@ const onyxv4_s5_0x1ad2eb = (()=>{
                   , s = "on" === k.hideOwnMass
                   , n = "on" === k.urlSkins
                   , _n = "on" === k.everyoneSkins
-                  //, __n = "on" === k.kanjiSkins
+                  , __n = "on" === k.kanjiSkins
                   , ___n = "on" === k.vanillaSkins
                   , a = "on" === k.teamIndicator
                   , r = "on" === k.multiboxRing
@@ -9466,7 +9466,7 @@ const onyxv4_s5_0x1ad2eb = (()=>{
                             1 == w && a && !g.isMine && S && 50 > g.animRadius * L.viewport && e.drawImage(R.indicator, ~~(g.x - C.x - c / 2), ~~(g.y - C.y - g.animRadius - 10 - c), ~~c, ~~c);
                             const t = l ? /*g.animRadius * x / 75*/0 : 0
                               , s = S && n && N.getCustomSkin(g.worldID)
-							  , _s = !(k.hideOwnSkin === "on" && g.isMine)/* && N.checkHasKanji(g.nick) && __n && N.getKanjiSkin(N.checkHasKanji(g.nick))*/
+							  , _s = !(k.hideOwnSkin === "on" && g.isMine) && N.checkHasKanji(g.nick) && __n && N.getKanjiSkin(N.checkHasKanji(g.nick))
 							  , __s = !(k.hideOwnSkin === "on" && g.isMine) && ___n && N.getVanillaSkin(g.skin)
 							  , ts1 = this.checkIsTarget(g.worldID, 1) && this.target1Skin
 							  , ts2 = this.checkIsTarget(g.worldID, 2) && this.target2Skin
@@ -10049,14 +10049,14 @@ const onyxv4_s5_0x1ad2eb = (()=>{
                     H.init(),
                     de.init(),
                     be.init(),
-					/*N.getKanjis(),
+					N.getKanjis(),
 					setInterval(() => {
 						N.getKanjis()
-					}, 60000);*/
+					}, 60000);
                     this.loop = new PIXI.Ticker();
 					this.loop.add(() => {
                         e.run()//,
-						_.send()
+						//_.send()
                     }),
 					this.loop.start(),
                     setInterval(()=>{
