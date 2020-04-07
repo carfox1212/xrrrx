@@ -10053,12 +10053,12 @@ const onyxv4_s5_0x1ad2eb = (()=>{
 					setInterval(() => {
 						N.getKanjis()
 					}, 60000);*/
-                    /*this.loop = new PIXI.Ticker();
+                    this.loop = new PIXI.Ticker();
 					this.loop.add(() => {
                         e.run()//,
-						//_.send()
-                    }),*/
-					//this.loop.start(),
+						_.send()
+                    }),
+					this.loop.start(),
                     setInterval(()=>{
                         _.send()
                     }, 40),
