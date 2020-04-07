@@ -9466,7 +9466,7 @@ const onyxv4_s5_0x1ad2eb = (()=>{
                             1 == w && a && !g.isMine && S && 50 > g.animRadius * L.viewport && e.drawImage(R.indicator, ~~(g.x - C.x - c / 2), ~~(g.y - C.y - g.animRadius - 10 - c), ~~c, ~~c);
                             const t = l ? /*g.animRadius * x / 75*/0 : 0
                               , s = S && n && N.getCustomSkin(g.worldID)
-							  //, _s = !(k.hideOwnSkin === "on" && g.isMine) && N.checkHasKanji(g.nick) && __n && N.getKanjiSkin(N.checkHasKanji(g.nick))
+							  , _s = !(k.hideOwnSkin === "on" && g.isMine)/* && N.checkHasKanji(g.nick) && __n && N.getKanjiSkin(N.checkHasKanji(g.nick))*/
 							  , __s = !(k.hideOwnSkin === "on" && g.isMine) && ___n && N.getVanillaSkin(g.skin)
 							  , ts1 = this.checkIsTarget(g.worldID, 1) && this.target1Skin
 							  , ts2 = this.checkIsTarget(g.worldID, 2) && this.target2Skin
