@@ -1607,7 +1607,6 @@ const onyxv4_s5_0x1ad2eb = (()=>{
 				this.splitRings = c.get('settings', 'splitRings') || 'off',
 				this.virusRange = c.get('settings', 'virusRange') || 'off',
                 this.borderGlow = c.get("settings", "borderGlow") || "off",
-		this.rainbowBorder = c.get("settings", "rainbowBorder") || "off",
                 this.rainbowBorder = c.get("settings", "rainbowBorder") || "off",
                 this.virusGlow = c.get("settings", "virusGlow") || "off",
                 this.foodGlow = c.get("settings", "foodGlow") || "off",
@@ -1931,7 +1930,6 @@ const onyxv4_s5_0x1ad2eb = (()=>{
                 this.selected = ~~c.get("profiles", "selected") || 1,
                 this.wheelIsOpened = !1,
                 this.tag = c.get("profiles", "tag") || "",
-                this.tag2 = c.get("profiles", "tag2") || "",
                 this.setDomValues(),
                 this.addEvents()
             }
@@ -1951,7 +1949,6 @@ const onyxv4_s5_0x1ad2eb = (()=>{
                 r("#skin").val(e.skin),
                 r("#skin2").val(e.skin2),
                 r("#tag").val(this.tag),
-                r("#tag2").val(this.tag2),
                 this.updateMainSkin();
                 for (let e = 8; 0 < e; )
                     this.updatePreviewSkin(e),
@@ -1979,10 +1976,7 @@ const onyxv4_s5_0x1ad2eb = (()=>{
                     e.wheelIsOpened = !1)
                 }),
                 r("#tag").blur(()=>{
-                    e.spectator(r("#tag").val(), r("#tag2").val())
-                }),
-                r("#tag2").blur(()=>{
-                    e.spectator(r("#tag").val(), r("#tag2").val())
+                    e.spectator(r("#tag").val())
                 }),
                 r("#nick").blur(()=>{
                     e.setNick(r("#nick").val())
@@ -2090,11 +2084,9 @@ const onyxv4_s5_0x1ad2eb = (()=>{
             }
         }, {
             key: "spectator",
-            value(e, e2) {
+            value(e) {
                 A.tag = e,
-                A.tag2 = e2,
-                c.set("profiles", "tag", e),
-                c.set("profiles", "tag2", e2)
+                c.set("profiles", "tag", e)
             }
         }, {
             key: "updateMainSkin",
@@ -2607,7 +2599,7 @@ const onyxv4_s5_0x1ad2eb = (()=>{
                 this.split(n),
                 setTimeout(()=>{
                     e.split(n)
-                }, 1)
+                }, 40)
             }
         }, {
             key: "split16",
@@ -2621,13 +2613,13 @@ const onyxv4_s5_0x1ad2eb = (()=>{
                 this.split(n),
                 setTimeout(()=>{
                     e.split(n);
-                }, 1),
+                }, 40),
                 setTimeout(()=>{
                     e.split(n);
-                }, 2),
+                }, 80),
                 setTimeout(()=>{
                     e.split(n);
-                }, 3)
+                }, 120)
             }
         }, {
             key: "commander",
@@ -3355,7 +3347,7 @@ const onyxv4_s5_0x1ad2eb = (()=>{
                 "cursor" === e && this.setCursor(t),
                 "massFont" === e && P.setMassCtxFont(),
                 "nickFont" === e && P.setNickCtxFont(),
-                "massStrokeColor" === e && (P.massCaches.clear(), Pm.reset())
+                "massStrokeColor" === e && (P.massCaches.clear(), Pm.reset()),
                 "nickStrokeColor" === e && P.nickCaches.clear(),
                 "massColor" === e && (P.massCaches.clear(), Pm.reset()),
                 "nickColor" === e && P.nickCaches.clear(),
@@ -5040,10 +5032,10 @@ const onyxv4_s5_0x1ad2eb = (()=>{
         }, {
             key: "toggleStreammode",
             value() {
-                this.streammode ? (r("#nick, #nick2, #tag, #tag2, #skin, #skin2, #party-token").removeClass("input-hidden"),
+                this.streammode ? (r("#nick, #nick2, #tag, #skin, #skin2, #party-token").removeClass("input-hidden"),
                 r("#streamMode").html('<i class="fas fa-eye"></i>'),
                 this.streammode = !1,
-                c.set("extras", "streammode", this.streammode)) : (r("#nick, #nick2, #tag, #tag2, #skin, #skin2, #party-token").addClass("input-hidden"),
+                c.set("extras", "streammode", this.streammode)) : (r("#nick, #nick2, #tag, #skin, #skin2, #party-token").addClass("input-hidden"),
                 r("#streamMode").html('<i class="fas fa-eye-slash"></i>'),
                 this.streammode = !0,
                 c.set("extras", "streammode", this.streammode))
@@ -5473,7 +5465,6 @@ const onyxv4_s5_0x1ad2eb = (()=>{
                 this._skin = re.getImgurCode(r("#skin").val()),
                 this._skin2 = re.getImgurCode(r("#skin2").val()),
                 this._tag = r("#tag").val(),
-                this._tag2 = r("#tag2").val(),
                 this._colorObject = {
                     r: 0,
                     g: 0,
@@ -5762,27 +5753,11 @@ const onyxv4_s5_0x1ad2eb = (()=>{
                 _e.tag(),
 				_es.tag(),
                 _e.join(1),
-                //_e.join(2),
-                C.update()
-            },
-            get() {
-                return this._tag
-            }
-        }, {
-            key: "tag2",
-            set(e) {
-                this._tag2 = e,
-                se.teammates.clear(),
-                ses.teammates.clear(),
-                C.reset(),
-                _e.tag(),
-				_es.tag(),
-                //_e.join(1),
                 _e.join(2),
                 C.update()
             },
             get() {
-                return this._tag2
+                return this._tag
             }
         }, {
             key: "colorObject",
@@ -6429,8 +6404,8 @@ const onyxv4_s5_0x1ad2eb = (()=>{
         return _createClass(e, [{
 			key: "reset",
 			value() {
-				this.pool = [],
-				this.index = 0
+				this.index = 0,
+				this.pool = []
 			}
 		}, {
             key: "init",
@@ -6844,11 +6819,8 @@ const onyxv4_s5_0x1ad2eb = (()=>{
             this.sectorEdge = 0,
             this.edge = 0,
             this.halfSectorEdge = 0,
-            this.letters = ["A", "B", "C", "D", "E"];
-			const sectorImage = new Image();
-			sectorImage.crossOrigin = "anonymous",
-			sectorImage.src = "https://senpa.io/web/resources/src/resources/img/sectors.png",
-			this.sectorImg = PIXI.Sprite.from(sectorImage),
+            this.letters = ["A", "B", "C", "D", "E"],
+			this.sectorImg = PIXI.Sprite.from("https://senpa.io/web/resources/src/resources/img/sectors.png"),
 			this.texts = new PIXI.Container(),
 			this.snowTexts = new PIXI.Container(),
             this.visible = new Set
@@ -8270,9 +8242,9 @@ const onyxv4_s5_0x1ad2eb = (()=>{
 			                    //grecaptcha.reset(y.v2widget);
 								grecaptcha.reset(y.v3widget);
 								//k.useBots === "on" && window.connection.ws.readyState === WebSocket.OPEN && (_this.myTurn = false, _this.spawn());
-								/*k.useBots === "on" && window.connection.ws.readyState === WebSocket.OPEN && (_this.myTurn = false, setTimeout(() => {
+								k.useBots === "on" && window.connection.ws.readyState === WebSocket.OPEN && (_this.myTurn = false, setTimeout(() => {
 									_this.spawn()
-								}, 1000));*/
+								}, 1000));
 							} else if (_this.myTurn === false && window.connection.ws.readyState === WebSocket.OPEN) {
 								window.user.captchaToken = token;
 								window.connection.send(window.buffers.sendToken(token));
@@ -8280,9 +8252,9 @@ const onyxv4_s5_0x1ad2eb = (()=>{
 								//grecaptcha.reset(y.v2widget);
 								grecaptcha.reset(y.v3widget);
 								//k.useBots === "on" && (_this.myTurn = false, _this.spawn());
-								/*k.useBots === "on" && (_this.myTurn = false, setTimeout(() => {
+								k.useBots === "on" && (_this.myTurn = false, setTimeout(() => {
 									_this.spawn()
-								}, 1000));*/
+								}, 1000));
 							}
 						})
 					})
@@ -8317,7 +8289,7 @@ const onyxv4_s5_0x1ad2eb = (()=>{
         }, {
             key: "split",
             value(n) {
-                const e = n || A.controllingTab;
+                const e = n === 1 ? 1 : n === 2 ? 2 : A.controllingTab;
                 //const e = A.controllingTab;
                 //console.log("N split: " + n + " E split: " + e)
                 if (this.connected(e)) {
@@ -8681,7 +8653,7 @@ const onyxv4_s5_0x1ad2eb = (()=>{
             key: "tag",
             value() {
                 this.sendString(11, A._tag, 1),
-                this.sendString(11, A._tag2, 2)
+                this.sendString(11, A._tag, 2)
             }
         }, {
             key: "skin",
@@ -8938,15 +8910,15 @@ const onyxv4_s5_0x1ad2eb = (()=>{
                     this._000054(f);
                     break;
                 case 20:
-                    /*f === 1 && */this.prePlayersData(t, f);
+                    f === 1 && this.prePlayersData(t, f);
                     break;
                 case 30:
-                    /*f === 1 && */this.prePlayersAlive(t, f);
+                    f === 1 && this.prePlayersAlive(t, f);
                     break;
                 case 96:
                     break;
                 case 100:
-                    /*f === 1 && */this.chat(t, f)
+                    f === 1 && this.chat(t, f)
                 }
             }
         }, {
@@ -8967,8 +8939,8 @@ const onyxv4_s5_0x1ad2eb = (()=>{
             key: "prePlayersData",
             value(e, f) {
                 //f = tab
-                /*if (f && f === 2)
-                    return;*/
+                if (f && f === 2)
+                    return;
                 const t = e.readUInt32()
                   , o = se.getPlayer(t);
                 o.nick = e.readUTF16string(),
@@ -8980,8 +8952,8 @@ const onyxv4_s5_0x1ad2eb = (()=>{
             key: "prePlayersAlive",
             value(e, f) {
                 //f = tab
-                /*if (f && f === 2)
-                    return;*/
+                if (f && f === 2)
+                    return;
                 const t = e.readUInt32()
                   , o = se.getPlayer(t);
                 o.x = e.readInt32(),
@@ -8994,8 +8966,8 @@ const onyxv4_s5_0x1ad2eb = (()=>{
             key: "chat",
             value(e, f) {
                 //f = tab
-                /*if (f && f === 2)
-                    return;*/
+                if (f && f === 2)
+                    return;
                 const t = e.readUInt8()
                   , o = (e.readUInt32(),
                 e.readUInt32(),
@@ -9630,7 +9602,7 @@ const onyxv4_s5_0x1ad2eb = (()=>{
                 this.cells(),
                 this.commands("commander"),
                 P.cleaner(),
-				Pm.reset(),
+                Pm.reset(),
 				this.rootContainer.addChild(this.mainContainer),
                 this.renderer.render(this.rootContainer)
             }
@@ -10226,7 +10198,7 @@ const onyxv4_s5_0x1ad2eb = (()=>{
             console.log("Connected to bot server.")
             window.connection.connected && k.showBotNotifNCount === "on" && k.useBots === "on" && m.alert("Bot", "Connected to bot server.")
 			Q.myTurn = !1
-			//k.useBots === "on" && window.connection.ws.readyState === WebSocket.OPEN && Q.spawn()
+			k.useBots === "on" && window.connection.ws.readyState === WebSocket.OPEN && Q.spawn()
             //document.getElementById('userStatus').style.color = '#00C02E'
             //document.getElementById('userStatus').innerText = 'Connected'
             //document.getElementById('connect').disabled = true
