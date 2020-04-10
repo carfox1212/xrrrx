@@ -1607,6 +1607,7 @@ const onyxv4_s5_0x1ad2eb = (()=>{
 				this.splitRings = c.get('settings', 'splitRings') || 'off',
 				this.virusRange = c.get('settings', 'virusRange') || 'off',
                 this.borderGlow = c.get("settings", "borderGlow") || "off",
+		this.rainbowBorder = c.get("settings", "rainbowBorder") || "off",
                 this.rainbowBorder = c.get("settings", "rainbowBorder") || "off",
                 this.virusGlow = c.get("settings", "virusGlow") || "off",
                 this.foodGlow = c.get("settings", "foodGlow") || "off",
@@ -9337,7 +9338,7 @@ const onyxv4_s5_0x1ad2eb = (()=>{
 					//if (i > 0) break;
 					const e = new PIXI.Sprite(this.edgeTexture);
 					//k.rainbowBorder === "on" && (e.tint = parseInt(pe.color.slice(1), 16));
-					e.filters = [this.filter1];
+					k.rainbowBorder !== "off" && (e.filters = [this.filter1]);
 					e.width = 1414.2 * 9 + ((i !== 1 && i !== 3) ? (2 * o) : 0);
 					e.rotation = i > 0 && i !== 2 ? Math.PI / 2 : 0;
 					0 === i ? e.position.set(G.left - o + 707.1, G.top - o - 200)
@@ -9347,35 +9348,37 @@ const onyxv4_s5_0x1ad2eb = (()=>{
 					m.addChild(e);
 					const c = new PIXI.Sprite(this.cornerTexture);
 					//k.rainbowBorder === "on" && (c.tint = parseInt(pe.color.slice(1), 16));
-					c.filters = [this.filter1];
+					k.rainbowBorder !== "off" && (c.filters = [this.filter1])
 					c.rotation = i > 0 ? Math.PI / 2 * i : 0;
 					0 === i ? c.position.set(~~(G.left - o - 200), ~~(G.top - 200))
 					: 1 === i ? c.position.set(~~(G.right + o + 200), ~~(G.top - 200))
 					: 2 === i ? c.position.set(~~(G.right + o + 200), ~~(G.bottom + 200))
 					: 3 === i && c.position.set(~~(G.left - o - 200), ~~(G.bottom + 200));
 					m.addChild(c);
-					const rgb1 = new PIXI.Sprite(this.rgbImg); //1 = inner
-					rgb1.filters = [this.filter1];
-					rgb1.width = 1414.2 * 10 + 707.1 + ((i !== 1 && i !== 3) ? (2 * o) : 0);
-					rgb1.height = 40 + oe.borderGlowSize;
-					rgb1.rotation = Math.PI / 2 * i;
-					0 === i ? rgb1.position.set(G.left - 707.1, G.top + o)
-					: 1 === i ? rgb1.position.set(G.right, G.top - 707.1)
-					: 2 === i ? rgb1.position.set(G.right + 707.1, G.bottom - o)
-					: 3 === i && rgb1.position.set(G.left, G.bottom + 707.1);
-					for (let i = 0; i < oe.borderGlowStrength; i++) m.addChild(rgb1);
-					const rgb2 = new PIXI.Sprite(this.rgbImg); //2 = outer
-					rgb2.filters = [this.filter1];
-					rgb2.pivot.set(0, 1);
-					rgb2.width = 1414.2 * 10 + 707.1 + ((i !== 1 && i !== 3) ? (2 * o) : 0);
-					rgb2.height = 40 + oe.borderGlowSize;
-					rgb2.scale.x *= -1;
-					rgb2.rotation = Math.PI + Math.PI / 2 * i;
-					0 === i ? rgb2.position.set(G.left - 707.1, G.top - o)
-					: 1 === i ? rgb2.position.set(G.right + 2 * o, G.top - 707.1)
-					: 2 === i ? rgb2.position.set(G.right + 707.1, G.bottom + o)
-					: 3 === i && rgb2.position.set(G.left - 2 * o, G.bottom + 707.1);
-					for (let i = 0; i < oe.borderGlowStrength; i++) m.addChild(rgb2);
+					if (k.rainbowBorder !== "off") {
+						const rgb1 = new PIXI.Sprite(this.rgbImg); //1 = inner
+						rgb1.filters = [this.filter1];
+						rgb1.width = 1414.2 * 10 + 707.1 + ((i !== 1 && i !== 3) ? (2 * o) : 0) - (i === 3 ? o : 0);
+						rgb1.height = 40 + oe.borderGlowSize;
+						rgb1.rotation = Math.PI / 2 * i;
+						0 === i ? rgb1.position.set(G.left - 707.1, G.top + o)
+						: 1 === i ? rgb1.position.set(G.right, G.top - 707.1)
+						: 2 === i ? rgb1.position.set(G.right + 707.1, G.bottom - o)
+						: 3 === i && rgb1.position.set(G.left, G.bottom + 707.1);
+						for (let i = 0; i < oe.borderGlowStrength; i++) m.addChild(rgb1);
+						const rgb2 = new PIXI.Sprite(this.rgbImg); //2 = outer
+						rgb2.filters = [this.filter1];
+						rgb2.pivot.set(0, 1);
+						rgb2.width = 1414.2 * 10 + 707.1 + ((i !== 1 && i !== 3) ? (2 * o) : 0) - (i === 3 ? o : 0);
+						rgb2.height = 40 + oe.borderGlowSize;
+						rgb2.scale.x *= -1;
+						rgb2.rotation = Math.PI + Math.PI / 2 * i;
+						0 === i ? rgb2.position.set(G.left - 707.1, G.top - o)
+						: 1 === i ? rgb2.position.set(G.right + 2 * o, G.top - 707.1)
+						: 2 === i ? rgb2.position.set(G.right + 707.1, G.bottom + o)
+						: 3 === i && rgb2.position.set(G.left - 2 * o, G.bottom + 707.1);
+						for (let i = 0; i < oe.borderGlowStrength; i++) m.addChild(rgb2);
+					};
 				};
             }
         }, {
@@ -9391,7 +9394,7 @@ const onyxv4_s5_0x1ad2eb = (()=>{
                 this.cornerCanvas.width = 200 + 707.1;
                 this.cornerCanvas.height = 200 + 707.1;
                 this.settings.isGlowOn && (this.cornerCtx.shadowBlur = oe.borderGlowSize,
-                this.cornerCtx.shadowColor = "#ff0000"/*oe.borderGlow*/);
+                this.cornerCtx.shadowColor = k.rainbowBorder !== "off" ? "#ff0000" : oe.borderGlow);
                 this.cornerCtx.strokeStyle = oe.borderColor;
                 this.cornerCtx.lineWidth = oe.borderWidth;
 				for (let i = 0; i < this.settings.strength; i++) {
@@ -9413,7 +9416,7 @@ const onyxv4_s5_0x1ad2eb = (()=>{
                 this.edgeCanvas.width = 1414.2 + oe.borderWidth/10;
                 this.edgeCanvas.height = 1414.2 + oe.borderWidth/10;
                 this.settings.isGlowOn && (this.edgeCtx.shadowBlur = oe.borderGlowSize,
-                this.edgeCtx.shadowColor = "#ff0000"/*oe.borderGlow*/);
+                this.edgeCtx.shadowColor = k.rainbowBorder !== "off" ? "#ff0000" : oe.borderGlow);
                 this.edgeCtx.fillStyle = oe.borderColor;
 				for (let i = 0; i < this.settings.strength; i++) {
 					this.edgeCtx.fillRect(-200, 200, 2000, oe.borderWidth);
