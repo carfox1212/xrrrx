@@ -6755,18 +6755,6 @@ const onyxv4_s5_0x1ad2eb = (()=>{
                         e.add(this.letters[i + t] + (o + a + 1))
             }
         }, {
-            key: "drawBar",
-            value(x1, y1, x2, y2, width,frequency) {
-    var lineColor = "#EEE8AA"
-    	Xctx = re.ctx;	
-    Xctx.strokeStyle = lineColor;
-    Xctx.lineWidth = width;
-    Xctx.beginPath();
-    Xctx.moveTo(x1,y1);
-    Xctx.lineTo(x2,y2);
-    Xctx.stroke();
-            }
-        },{
             key: "normal",
             value() {
                 const e = re.ctx;
@@ -6785,48 +6773,6 @@ const onyxv4_s5_0x1ad2eb = (()=>{
             key: "snowflakes",
             value() {
                 const e = re.ctx;
-		var bars = 130;
-		var bar_width = 2;
-		        audio = new Audio();
-    context = new (window.AudioContext || window.webkitAudioContext)();
-    analyser = context.createAnalyser();
-    
-    audio.src = "https://f.easyuploader.app/eu-prd/upload/20200419085034_5971564a67744534566f.mp3"; // the source path
-audio.crossOrigin = "anonymous";
-audio.volume = 0.05
-    source = context.createMediaElementSource(audio);
-    source.connect(analyser);
-    analyser.connect(context.destination);
- 
-    
-    frequency_array = new Uint8Array(analyser.frequencyBinCount);
-    
-    audio.play();
-	Xctx = re.ctx;	    
-	    center_x = 0 + G.offset.x
-    center_y = 0 + G.offset.y
-    radius = 150;
-    	        analyser.getByteFrequencyData(frequency_array);
-    for(var i = 0; i < bars; i++){
-	           //divide a circle into equal parts
-        rads = Math.PI * 2 / bars;
-        
-        bar_height = frequency_array[i]*0.7;
-        
-        // set coordinates
-        x = center_x + Math.cos(rads * i) * (radius);
-	y = center_y + Math.sin(rads * i) * (radius);
-        x_end = center_x + Math.cos(rads * i)*(radius + bar_height);
-        y_end = center_y + Math.sin(rads * i)*(radius + bar_height);
-        
-        //draw a bar
-        drawBar(x, y, x_end, y_end, bar_width,frequency_array[i]);
-    //draw a circle
-    Xctx.beginPath();
-    Xctx.lineWidth = "5"
-    Xctx.arc(center_x,center_y,radius,0,2*Math.PI);
-    Xctx.stroke();
-    }
                 e.font = "400 " + oe.gridTextSize + "px FontAwesome";
                 for (let t, o = 0; 5 > o; o++) {
                     t = this.top + this.halfSectorEdge + o * this.sectorEdge;
