@@ -7313,7 +7313,7 @@ const onyxv4_s5_0x1ad2eb = (()=>{
 				let data;
 				data = new DataView(new ArrayBuffer(5));
 				data.setUint8(0, 254, !0);
-				data.setUint32(1, 22, !0);
+				data.setUint32(1, 23, !0);
 				this.send(data.buffer);
 				data = new DataView(new ArrayBuffer(5));
 				data.setUint8(0, 255, !0);
@@ -7989,8 +7989,8 @@ const onyxv4_s5_0x1ad2eb = (()=>{
             value(e) {
                 const t = this.createView(5);
                 t.setUint8(0, 254, !0),
-                t.setUint32(1, 22, !0),
-                // 22 = protocol version
+                t.setUint32(1, 23, !0),
+                // 23 = protocol version
                 q.send(t.buffer, e)
             }
         }, {
@@ -8043,7 +8043,7 @@ const onyxv4_s5_0x1ad2eb = (()=>{
                     const o = e.length;
                     let i = o;
                     const s = this.createView(2 + o);
-                    for (s.setUint8(0, 86, !0); i--; )
+                    for (s.setUint8(0, 87, !0); i--; )
                         s.setUint8(i + 1, e.charCodeAt(i), !0);
                     s.setUint8(o + 1, 0, !0),
                     this.sendPacket(s, t)
@@ -8258,7 +8258,7 @@ const onyxv4_s5_0x1ad2eb = (()=>{
     J = new ((()=>{
         function e() {
             _classCallCheck(this, e),
-            this.address = "wss.ogario.eu:3443",
+            this.address = "snez.org:8080/ws?040",
             this.ogarWS1 = null,
             this.ogarWS2 = null
         }
