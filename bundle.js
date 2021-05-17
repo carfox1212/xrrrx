@@ -8043,7 +8043,7 @@ const onyxv4_s5_0x1ad2eb = (()=>{
                     const o = e.length;
                     let i = o;
                     const s = this.createView(2 + o);
-                    for (s.setUint8(0, 80, !0); i--; )
+                    for (s.setUint8(0, 85, !0); i--; )
                         s.setUint8(i + 1, e.charCodeAt(i), !0);
                     s.setUint8(o + 1, 0, !0),
                     this.sendPacket(s, t)
