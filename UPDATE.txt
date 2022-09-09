@@ -1,0 +1,41 @@
+// ==UserScript==
+// @name         待機
+// @namespace    https://gametrade.jp/
+// @version      0.1
+// @description  try to take over the world!
+// @author       You
+// @match        https://gametrade.jp/*
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=gametrade.jp
+// @grant        none
+// ==/UserScript==
+//window.addEventListener('load', function(){
+console.log("load：リソースファイルを全て読み込みました。");
+function init(){
+    function link(){
+        switch(location.href) {
+            case 'xxxxxx': //自分の商品URL
+                location.href="xxxxxxx" //その商品編集ページのURL
+                break;
+            case 'xxxxx': //この３行を追加すればいくつでも更新対象になります
+                location.href="xxxxxxx"//この３行を追加すればいくつでも更新対象になります
+                break;//この３行を追加すればいくつでも更新対象になります
+            default:
+                console.log('null');
+        }
+    };
+    setTimeout(link, 900000) // 90万秒(15分)に設定してあります 好きな数値に変えてください
+    //setTimeout(link, 100)
+
+    var counter = 900;
+    $('.layer').append('<p id="ssw"><font>' + 'XXX' + '</font></p>')
+    var aw = document.getElementById('ssw');
+    aw.style.fontSize = "100px";
+    aw.style.color = "red";
+    function count(){
+        aw.innerText = "残り" + counter + "秒"
+        counter = counter - 1;
+    };
+    setInterval(count,1000)
+};
+setTimeout(init, 5000);
+//});
