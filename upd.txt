@@ -1,0 +1,41 @@
+// ==UserScript==
+// @name         更新
+// @namespace    https://gametrade.jp/
+// @version      0.1
+// @description  try to take over the world!
+// @author       You
+// @match        https://gametrade.jp/*
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=gametrade.jp
+// @grant        none
+// ==/UserScript==
+
+		//window.addEventListener('load', function(){
+
+function init(){
+    function miss(){
+        switch(location.href) {
+            case 'xxxxx': //更新したい商品の編集ページ
+                location.href="xxxxx" //更新したい商品ページ
+                break;
+            case 'xxxxxx': // 待機と同じです
+                location.href="xxxxx"
+                break;
+            default:
+                console.log('null');
+        }
+    }
+    setInterval(miss,100000); // 100秒経ってもrecaptchaが更新されなかったら自動で商品ページに帰る
+
+    console.log("load：リソースファイルを全て読み込みました。");
+    $('input[name="agreement"]').click()
+    //var saw = document.getElementById("exhibit_exhibit_sub_form_values_attributes_0_value")
+    //saw.value = Number(saw.value) + 1;
+    var diw = document.getElementById("exhibit_price")
+    diw.value = Number(diw.value) + 1
+    var recptbtn = document.getElementsByClassName('g-recaptcha');
+    recptbtn[0].click();
+    var da = document.getElementsByClassName("help-button-holder")
+    da[0].click()
+};
+setTimeout(init, 1000)
+//});
