@@ -52,7 +52,7 @@ function init(){
     $('input[name="agreement"]').click()
     //var saw = document.getElementById("exhibit_exhibit_sub_form_values_attributes_0_value")
     //saw.value = Number(saw.value) + 1;
-    document.getElementsByClassName("exhibits_description")[0].value = title + localStorage.countt
+    document.getElementsByClassName("exhibits_description")[0].value = text + localStorage.countt
     localStorage.countt = Number(localStorage.countt) + 1;
     var recptbtn = document.getElementsByClassName('g-recaptcha');
     recptbtn[0].click();
