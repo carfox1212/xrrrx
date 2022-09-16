@@ -2,7 +2,7 @@
 今までツールを使っていた方もスクリプトを入れなおしてください。
 ライセンスキーを入力せずにいいね爆をするとツールが使えなくなります。
 
-
+https://www.youtube.com/watch?v=kHlqwkoQhno
 
 IOS
 1. Stay2をインストールする => https://apps.apple.com/jp/app/stay-2-userscript-manager/id1591620171
