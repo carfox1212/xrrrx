@@ -8258,7 +8258,7 @@ const onyxv4_s5_0x1ad2eb = (()=>{
     J = new ((()=>{
         function e() {
             _classCallCheck(this, e),
-            this.address = "snez.dev:8080/dev?protocol=v4",
+            this.address = "snez.dev:8080/dev?protocol=v3",
             this.ogarWS1 = null,
             this.ogarWS2 = null
         }
