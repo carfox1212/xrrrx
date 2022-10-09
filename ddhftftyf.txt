@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         いいね爆 v5.1 dev
+// @name         いいね爆 v5.1
 // @namespace    http://tampermonkey.net/
 // @version      1
 // @author       You
